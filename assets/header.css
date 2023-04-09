@@ -116,30 +116,34 @@
     box-shadow: none;
     background-color: currentColor; }
 
-    @media screen and (max-width: 640px) {
-        .Header__Wrapper {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px;
+    .Header__Icon {
+        display: none; /* hide both icons by default */
+      }
+
+      @media (max-width: 767px) {
+        /* show the mobile icon */
+        .Header__Icon.hidden-desk {
+          display: block;
         }
 
-        .Header__Logo {
-          width: 100%;
-          margin-bottom: 10px;
-        }
-
-        .Header__Icon {
-          margin-left: auto;
+        /* hide the desktop icon */
+        .Header__Icon:not(.hidden-desk) {
+          display: none;
         }
       }
 
-  @media screen and (min-width: 1240px) {
-    .js .Header__Wrapper {
-      opacity: 0;
-      -webkit-transition: opacity 0.3s ease-in-out;
-      transition: opacity 0.3s ease-in-out; }
+      @media (min-width: 768px) {
+        /* show the desktop icon */
+        .Header__Icon:not(.hidden-desk) {
+          display: block;
+        }
+
+        /* hide the mobile icon */
+        .Header__Icon.hidden-desk {
+          display: none;
+        }
+      }
+
 
     .Header:not(.Header--sidebar) .Header__Wrapper {
       padding: 18px 50px; }
